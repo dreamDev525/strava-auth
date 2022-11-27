@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "name": "micro-strava-auth",
+  "builds": [
+    {
+      "src": "api/login.js",
+      "use": "@now/node"
+    },
+    {
+      "src": "api/callback.js",
+      "use": "@now/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/login",
+      "dest": "api/login.js"
+    },
+    {
+      "src": "/callback",
+      "dest": "api/callback.js"
+    }
+  ],
+  "env": {
+    "STRAVA_CLIENT_ID": "@strava-heat-client-id",
+    "STRAVA_CLIENT_SECRET": "@strava-heat-client-secret",
+    "STRAVA_REDIRECT": "http://localhost:3001/login"
+  }
+}
